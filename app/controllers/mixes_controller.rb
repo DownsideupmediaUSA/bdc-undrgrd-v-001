@@ -1,0 +1,4 @@
+class MixesController < ApplicationController
+
+end
+

@@ -1,32 +1,35 @@
 Brandon's development checklist
 
 I. Build out file structure/scaffold
-   A.controller 
+   A.controller
+    1.User -x
+    2.Mixes -x
+    3.Tracks -x
      
    B.models
     1.User 
-      a)has many mixes
-      b)has many tracks  
+      a)has many mixes -x
+      b)has many tracks  -x
     2.Tracks 
-      a)belong to a user  
+      a)belong to a user  -x
     3.Mixes
-      a)belong to a user      
+      a)belong to a user    -x  
    C.views
     1.User  
      a)create user 
      c)login 
     
     2.Tracks 
-     a)edit 
-     b)index 
-     c)new 
-     d)edit  
+     a)edit -x
+     b)new_track -x
+     c)show_track -x
+     d)tracks -x
 
-    3.Tracks 
+    3.Mixes 
      a)edit 
-     b)index 
-     c)new 
-     d)edit  
+     b)new_mix
+     c)show_mix
+     d)mixes 
 
     3.Index
     4.Layout

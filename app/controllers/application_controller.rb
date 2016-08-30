@@ -10,20 +10,20 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    "hello mudafucka"
-    # erb :index
+
+    erb :index
   end  
   
 
-  # helpers do
+  helpers do
 
-  #   def logged_in?
-  #     !!session[:user_id]
-  #   end
+    def logged_in?
+      !!session[:user_id]
+    end
 
-  #   def current_user
-  #     User.find(session[:user_id])
-  #   end
+    def current_user
+      User.find(session[:user_id])
+    end
 
-  # end
+  end
 end
