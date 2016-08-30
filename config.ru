@@ -6,7 +6,7 @@ end
 
 
 use Rack::MethodOverride
-# use TracksController
-# use MixesController
+use TracksController
+use MixesController
 use UsersController
 run ApplicationController

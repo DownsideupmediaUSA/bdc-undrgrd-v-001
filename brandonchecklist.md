@@ -61,6 +61,23 @@ III. Migrate! -x
 *****SAVE YOUR PROGRESS PLEASE THANK YYYYYOUUUU*****
 
 IV. Build out Controller Routes
+
+    A.User
+      1.create_user (signup_)
+        a)gets create_user form and sends to user -x
+        b)posts completed form & redirects to user/index page -x
+        c)logout ends session and sends user back to login page -x
+        
+      2.index -  
+        a)Welcomes signed in user 
+        b)link to allow user to view all tracks
+        c)link to allow user to view all mixes
+      3.login
+        a)gets login form  
+        b)if valid user redirects to index
+      4.show
+        a)shows data(content) of new tracks
+        b)shows edited data(content) of a selected tracks.
     A.Tracks
      1.edit 
       a)gets edit form and sends to user
