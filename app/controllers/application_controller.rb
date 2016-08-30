@@ -1,0 +1,29 @@
+require './config/environment'
+
+class ApplicationController < Sinatra::Base
+ register Sinatra::ActiveRecordExtension
+  configure do
+    set :public_folder, 'public'
+    set :views, 'app/views'
+    enable :sessions  
+    set :session_secret, "bdcmuzik secret"
+  end
+
+  get '/' do
+    "hello mudafucka"
+    # erb :index
+  end  
+  
+
+  # helpers do
+
+  #   def logged_in?
+  #     !!session[:user_id]
+  #   end
+
+  #   def current_user
+  #     User.find(session[:user_id])
+  #   end
+
+  # end
+end
