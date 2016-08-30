@@ -8,5 +8,5 @@ end
 use Rack::MethodOverride
 # use TracksController
 # use MixesController
-# use UsersController
+use UsersController
 run ApplicationController

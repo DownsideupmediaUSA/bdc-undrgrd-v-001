@@ -32,26 +32,26 @@ I. Build out file structure/scaffold
      c)show_mix -x
      d)mixes -x
 
-    3.Index
-    4.Layout
+    3.Index -x
+    4.Layout -x
 
 *****SAVE YOUR PROGRESS PLEASE THANK YYYYYOUUUU*****
 
 II. Create Tables
     A.CreateUser 
-     1.username
-     2.email
-     3.password_digest
+     1.username -x
+     2.email    -x
+     3.password_digest -x
      
     B.CreateTracks 
-     1.title
-     2.content(mp3) 
-     3.user id 
+     1.title   -x
+     2.content(mp3) -x
+     3.user id -x
 
     C.CreateMixes
-     1.title
-     2.content(mp3)
-     3.user id
+     1.title   -x
+     2.content(mp3) -x
+     3.user id  -x
 
 ****TEST OUT YOUR DATABASE PRIOR TO SAVING HERE *****
 *****SAVE YOUR PROGRESS PLEASE THANK YYYYYOUUUU*****
