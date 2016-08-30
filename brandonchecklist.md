@@ -16,8 +16,9 @@ I. Build out file structure/scaffold
       a)belong to a user    -x  
    C.views
     1.User  
-     a)create user 
-     c)login 
+     a)create user -x
+     b)show -x
+     c)login       -x
     
     2.Tracks 
      a)edit -x
@@ -26,10 +27,10 @@ I. Build out file structure/scaffold
      d)tracks -x
 
     3.Mixes 
-     a)edit 
-     b)new_mix
-     c)show_mix
-     d)mixes 
+     a)edit -x
+     b)new_mix-x
+     c)show_mix -x
+     d)mixes -x
 
     3.Index
     4.Layout
