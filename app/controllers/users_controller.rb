@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
       @user.save
       session[:user_id] = @user.id
-      redirect to '/show'
+      erb :'/show'
     end
   end
 
@@ -40,6 +40,19 @@ class UsersController < ApplicationController
     else
       redirect to '/signup'
     end
+  end
+
+  get '/show' do
+    erb :'/users/show'
+    # if session[:user_id]
+    #   @tracks = Track.all 
+    #   erb :'/tracks/tracks'
+    # elsif session[:user_id]
+    #   @mixes = Mix.all 
+    #   erb :'/mixes/mixes'
+    # else
+      # redirect to '/login'
+    # end
   end
  
   get '/logout' do
