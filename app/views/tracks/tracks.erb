@@ -1,1 +1,6 @@
-tracks.erb
+<h2>Tracks</h2>
+<ul>
+<% @tracks.each do |track|%>
+  <li><a href="/tracks/<%=track.slug%>"<%= track.title%>></a></li>
+  <% end %>
+  </ul>

@@ -1,1 +1,13 @@
-show_tracks.erb
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+<h1> <%= @track.name%> </h1>
+
+<a href="/users/<%= @track.user.slug %>"><%= @track.user.username %></a>
+
+<form method="post" action="/tracks/<%=@track.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Track">
+</form>
+

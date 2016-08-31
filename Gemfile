@@ -13,5 +13,6 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'require_all'
 gem 'bcrypt'
 gem "tux"
+gem 'rack-flash3'
 
 

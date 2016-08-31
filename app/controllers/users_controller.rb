@@ -43,16 +43,11 @@ class UsersController < ApplicationController
   end
 
   get '/show' do
+    if session[:user_id]
     erb :'/users/show'
-    # if session[:user_id]
-    #   @tracks = Track.all 
-    #   erb :'/tracks/tracks'
-    # elsif session[:user_id]
-    #   @mixes = Mix.all 
-    #   erb :'/mixes/mixes'
-    # else
-      # redirect to '/login'
-    # end
+    else
+      redirect to '/login'
+    end
   end
  
   get '/logout' do
