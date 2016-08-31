@@ -69,29 +69,29 @@ IV. Build out Controller Routes
         c)logout ends session and sends user back to login page -x
         
       2.index -  
-        a)Welcomes signed in user 
-        b)link to allow user to view all tracks
-        c)link to allow user to view all mixes
+        a)Welcomes signed in user  -x
+        b)link to allow user to view all tracks -x
+        c)link to allow user to view all mixes -x
       3.login
-        a)gets login form  
-        b)if valid user redirects to index
+        a)gets login form  -x
+        b)if valid user redirects to index -x
       4.show
-        a)shows data(content) of new tracks
-        b)shows edited data(content) of a selected tracks.
+        a)shows data(content) of new tracks -x
+        b)shows edited data(content) of a selected tracks.-x
     A.Tracks
-     1.edit 
-      a)gets edit form and sends to user
-      b)allows user to delete from indexed tracks
-      c)posts changed form & redirects to show page
+     1.edit  
+      a)gets edit form and sends to user -x
+      b)allows user to delete from indexed tracks -x
+      c)posts changed form & redirects to show page -x
      2.index - gets list of tracks
-      a)lists index of tracks for user and sends back to index erb
-      b)link to allow user to write a new tracks
+      a)lists index of tracks for user and sends back to index erb -x
+      b)link to allow user to write a new tracks -x
      3.new
-      a)gets new tracks form via new.erb
-      b)posts new data(content) and redirects to trackss/new erb
+      a)gets new tracks form via new.erb -x
+      b)posts new data(content) and redirects to trackss/new erb  
      4.show
-      a)shows data(content) of new tracks
-      b)shows edited data(content) of a selected tracks.
+      a)shows data(content) of new tracks -x
+      b)shows edited data(content) of a selected tracks. -x
 
     A.Mixes
      1.edit 
