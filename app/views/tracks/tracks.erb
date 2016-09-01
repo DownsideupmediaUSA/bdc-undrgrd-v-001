@@ -1,6 +1,6 @@
-<h2>Tracks</h2>
+<h2>Your Tracks</h2>
 <ul>
-<% @tracks.each do |track|%>
-  <li><a href="/tracks/<%=track.slug%>"<%= track.title%>></a></li>
+<% @tracks.each_with_index do |track, i|%>
+  <li><%= i + 1 %>.<%= track.title%></li>
   <% end %>
   </ul>

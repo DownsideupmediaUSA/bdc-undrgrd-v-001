@@ -1,11 +1,13 @@
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
-<% end %>
+<% end %> <br><br>
 
-<h1> <%= @track.name%> </h1>
 
-<a href="/users/<%= @track.user.slug %>"><%= @track.user.username %></a>
+<h1><%= @track.title%></h1>
 
+
+
+<br><br>
 <form method="post" action="/tracks/<%=@track.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Track">

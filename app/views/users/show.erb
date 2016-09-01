@@ -3,13 +3,13 @@
 <h3> Your Tracks: </h3>
 <ul>
 <% current_user.tracks.each do |track|%>
-  <li><a href="tracks/<%= track.slug%>"><%= track.title%></a></li>
+  <li><a href="tracks/<%= track.id%>"><%= track.title%></a></li>
   <%end%>
 </ul>
 
 <h3> Your mixes: </h3>
 <ul>
 <% current_user.mixes.each do |mix|%>
-  <li><a href="mixes/<%= mix.slug%>"><%= mix.title%></a></li>
+  <li><a href="mixes/<%= mix.id%>"><%= mix.title%></a></li>
   <%end%>
 </ul>
