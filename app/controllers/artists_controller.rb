@@ -9,7 +9,7 @@ class ArtistsController < ApplicationController
     if !session[:artist_id]
       erb :'/artists/create_artists', locals: {message: "You have to sign in to get in ya dig?"}
     else
-      redirect to '/show'
+      redirect to '/artists/show'
     end
   end
 
@@ -42,11 +42,11 @@ class ArtistsController < ApplicationController
     end
   end
 
-  get '/show' do
+  get '/artists/show' do
     if !session[:artist_id]
-    erb :'/artists/show'
-    else
       redirect to '/login'
+    else
+       erb :'/artists/show'
     end
   end
  
