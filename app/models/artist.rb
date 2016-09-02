@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class Artist < ActiveRecord::Base
   has_many :tracks
   has_many :mixes
 
@@ -9,7 +9,7 @@ def slug
 end
 
 def self.find_by_slug(slug)
-  User.all.find{|user| user.slug == slug}
+  Artist.all.find{|artist| artist.slug == slug}
 end 
 
 

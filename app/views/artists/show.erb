@@ -1,15 +1,15 @@
 
-<h2><p> Welcome <%= current_user.username %></p></h2> 
+<h2><p> Welcome <%= current_artist.artist_name %></p></h2> 
 <h3> Your Tracks: </h3>
 <ul>
-<% current_user.tracks.each do |track|%>
+<% current_artist.tracks.each do |track|%>
   <li><a href="tracks/<%= track.id%>"><%= track.title%></a></li>
   <%end%>
 </ul>
 
 <h3> Your mixes: </h3>
 <ul>
-<% current_user.mixes.each do |mix|%>
+<% current_artist.mixes.each do |mix|%>
   <li><a href="mixes/<%= mix.id%>"><%= mix.title%></a></li>
   <%end%>
 </ul>

@@ -24,7 +24,7 @@ post '/tracks' do
     redirect to "/tracks/new"
   else
     @track = Track.create(:title =>params["Title"])
-    user = User.find_by_id(current_user.id) 
+    artist = Artist.find_by_id(current_artist.id) 
 
     
    
@@ -63,17 +63,17 @@ end
 patch '/tracks/:id/edit' do
   @track = Track.find_by_id(params[:id])
   @track.update(params[:track])
-  @track.user = User.find_or_create_by(name: params[:user][:name])
+  @track.artist = Artist.find_or_create_by(name: params[:artist][:name])
   @track.save
   flash[:message] = "Successfully updated song."
-  redirect("/users/#{@track.id}")
+  redirect("/artists/#{@track.id}")
 end
 
 delete '/tracks/:id/delete' do 
     @track = Track.find_by_id(params[:id])
   if logged_in?
     @track = Track.find_by_id(params[:id])
-  if @track.user_id == current_user.id
+  if @track.artist_id == current_artist.id
     @track.delete
     redirect to '/tracks'
   else

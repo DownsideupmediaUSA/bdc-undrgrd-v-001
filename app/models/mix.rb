@@ -1,5 +1,5 @@
 class Mix < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :artist
 
 def slug
   title.downcase.gsub(" ","-")

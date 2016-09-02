@@ -1,5 +1,5 @@
 class Track < ActiveRecord::Base
-belongs_to :User
+belongs_to :artist
 
 # def slug
 #   self.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
