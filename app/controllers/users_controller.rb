@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   get '/show' do
-    if session[:user_id]
+    if !session[:user_id]
     erb :'/users/show'
     else
       redirect to '/login'
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
  
   get '/logout' do
-    if session[:user_id] != nil
+    if logged_in? != nil
       session.destroy
       redirect to '/login'
     else
