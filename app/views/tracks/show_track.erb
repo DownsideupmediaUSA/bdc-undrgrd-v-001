@@ -2,6 +2,10 @@
   <%= flash[:message] %>
 <% end %>
 
-<h2> <%= @track.artist%> </h2><br>
-<h2> <%= @track.title%> </h2>
+
+ 
+ <%= @track.id%>. "<%= @track.title%>"  
+
+
+<a href="/tracks/:id/edit"> Edit Track Info: </a>
  

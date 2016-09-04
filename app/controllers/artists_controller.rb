@@ -1,9 +1,14 @@
 class ArtistsController < ApplicationController
 
   get 'artists/:id' do 
-    @artist = artist.find_by_id(params[:id])
-    erb :'artists/show' 
+    if !logged_in?
+      redirect '/login'
+    end
+      @artist = Artist.find(params[:id])
+    if !@artist.nil? && @artist == current_user
+      erb :'artists/show' 
   end
+end
 
   get '/signup' do 
     if !session[:artist_id]
@@ -20,7 +25,7 @@ class ArtistsController < ApplicationController
       @artist = Artist.new(:username => params[:username], :artist_name => params[:artist_name], :email => params[:email], :password => params[:password])
       @artist.save
       session[:artist_id] = @artist.id
-      erb :'/artists/show'
+      erb :'artists/show'
     end
   end
 
@@ -36,7 +41,7 @@ class ArtistsController < ApplicationController
     artist = artist.find_by(:artistname => params[:artistname])
     if artist && artist.authenticate(params[:password])
       session[:artist_id] = artist.id
-      redirect "/show"
+      redirect "/tracks"
     else
       redirect to '/signup'
     end
@@ -46,7 +51,7 @@ class ArtistsController < ApplicationController
     if !session[:artist_id]
       redirect to '/login'
     else
-       erb :'/artists/show'
+       erb :'artists/show'
     end
   end
  
