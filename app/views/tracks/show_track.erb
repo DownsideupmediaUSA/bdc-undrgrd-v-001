@@ -6,6 +6,8 @@
  
  <%= @track.id%>. "<%= @track.title%>"  
 
+ <a href="/artists/<%= @track.artist.id%>"><%=@track.artist.artist_name%></a>
+
 
 <form method="post" action="/tracks/<%=@track.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">

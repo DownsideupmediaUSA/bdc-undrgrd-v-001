@@ -19,7 +19,7 @@ end
   end
 
   post '/signup' do 
-    if params[:artistname] == "" || params[:email] == "" || params[:password] == ""
+    if params[:artist_name] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/signup'
     else
       @artist = Artist.new(:username => params[:username], :artist_name => params[:artist_name], :email => params[:email], :password => params[:password])
@@ -38,8 +38,8 @@ end
   end
 
   post '/login' do
-    artist = artist.find_by(:artistname => params[:artistname])
-    if artist && artist.authenticate(params[:password])
+      @artist = Artist.find_by(:artist_name => params[:artist_name])
+    if @artist && @artist.authenticate(params[:password])
       session[:artist_id] = artist.id
       redirect "/tracks"
     else

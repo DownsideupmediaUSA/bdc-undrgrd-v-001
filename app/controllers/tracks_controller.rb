@@ -81,10 +81,11 @@ end
 delete '/tracks/:id/delete' do 
   if logged_in?
     @track = Track.find_by_id(params[:id])
-  if @track.artist_id == current_artist.id
+  if @track.artist_id == current_user.id
     @track.delete
     redirect to '/tracks'
   else
+    flash[:message] = "Nice try buddy..this isnt your track!"
     redirect to '/tracks'
   end
   else
