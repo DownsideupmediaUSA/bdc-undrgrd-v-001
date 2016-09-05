@@ -1,7 +1,7 @@
-<h1> Edit Tweet:</h1>
+<h1> Edit Track:></h1>
 
-<form method="POST" action="/tracks/<%=@track.id%>">
-<input id="hidden" type="hidden" name="_method" value="PATCH">
-<input type="text" name="Title" value="<%= @track.title%>"><br>
+<form action="/tracks/<%= @track.id%>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+ <input type="text" name="title" id="title" value="<%= @track.title %>"><br>
 <input type="submit" value="submit"><br>
 </form>

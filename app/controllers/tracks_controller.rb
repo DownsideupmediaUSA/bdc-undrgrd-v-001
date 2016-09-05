@@ -55,9 +55,10 @@ end
 get '/tracks/:id/edit' do
   if logged_in?
     @track = Track.find_by_id(params[:id])
-  if @track.id == current_user.id
+  if @track.artist_id == current_user.id
     erb :'tracks/edit'
-  else
+  else 
+    flash[:message] = "Nice try buddy..this isnt your track!"
     redirect to '/tracks'
   end
   else 
@@ -65,19 +66,19 @@ get '/tracks/:id/edit' do
   end
 end
 
-patch '/tracks/:id/edit' do
-  if logged_in?
-  @track = Track.find_by_id(params[:id])
-  @track.update(params[:track])
-  @track.artist = Artist.find_or_create_by(name: params[:artist][:name])
-  @track.save
-  flash[:message] = "Successfully updated song."
-  redirect("/artists/#{@track.id}")
+patch '/tracks/:id' do
+  if params[:title] == ""
+    redirect to "/tracks/#{params[:id]}/edit"
+  else
+    @track = Track.find_by_id(params[:id])
+    @track.title = params[:title]
+    @track.save
+    flash[:message] = "Successfully updated track!"
+    redirect("/tracks/#{@track.id}")
   end
 end
 
 delete '/tracks/:id/delete' do 
-    @track = Track.find_by_id(params[:id])
   if logged_in?
     @track = Track.find_by_id(params[:id])
   if @track.artist_id == current_artist.id

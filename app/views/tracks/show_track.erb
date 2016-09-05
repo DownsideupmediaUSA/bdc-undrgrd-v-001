@@ -7,5 +7,10 @@
  <%= @track.id%>. "<%= @track.title%>"  
 
 
-<a href="/tracks/:id/edit"> Edit Track Info: </a>
+<form method="post" action="/tracks/<%=@track.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Track">
+</form> 
+<a href="/tracks/<%=@track.id%>/edit"><br>Edit Track </a>
+<a href="/tracks"><br> Back to Track List </a>
  
