@@ -9,20 +9,28 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "bdcmuzik secret"
   end
 
-  get '/' do
-    erb :index
-  end  
-  
+ get '/' do
+   erb :index
+ end
 
-  helpers do
+ helpers do
+
+  
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect "/login?error=You have to be logged in to do that"
+      end
+    end
 
     def logged_in?
       !!session[:artist_id]
     end
 
     def current_user
-      @current_artist ||= Artist.find(session[:artist_id])
+      @current_user ||= Artist.find(session[:artist_id])
     end
 
-  end
+  end 
+
+  
 end

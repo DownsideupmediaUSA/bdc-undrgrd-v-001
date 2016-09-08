@@ -19,17 +19,6 @@ get '/tracks/new' do
   end
 end
 
-post '/tracks' do
-  if params[:title] == ""
-    redirect to "/tracks/new_track"
-  else
-    artist = Artist.find_by_id(session[:artist_id]) 
-    @track = Track.create(:title => params[:title], :artist_id => artist.id)
-    flash[:message] = "Successfully created track"
-    redirect("/tracks/#{@track.id}")
-  end
-end
-
 get '/tracks/:id' do
   if logged_in?
     @track = Track.find_by_id(params[:id])
@@ -38,6 +27,22 @@ get '/tracks/:id' do
     redirect to '/login'
   end
 end
+
+post '/tracks' do
+  if params[:title] == ""
+    redirect to "/tracks/new_track"
+  else
+    artist = Artist.find_by_id(session[:artist_id])
+    @track = Track.create(:title => params[:title], :artist_id => artist.id)
+    # @track.artist = Artist.find_or_create_by(:name => artist.name)
+   
+    @track.save
+    flash[:message] = "Successfully created track"
+    redirect("/tracks/#{@track.id}")
+  end
+end
+
+
 
 
 

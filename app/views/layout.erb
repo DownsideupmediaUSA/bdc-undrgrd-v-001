@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-  <title>UNDRGRND</title>
+  <title>UNDRGRND - Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
   </head>
@@ -9,11 +9,17 @@
     <nav>
       <% if logged_in? %>
         
-        <a href="/tracks/new"> Add a track! </a>
-        <a href="/mixes/new"> Add a mix! </a>
+        <a href="/tracks/new"> Add A Track! -</a>
+        <a href="/show"> View Your Tracks! -</a>
+        <a href="/tracks"> View All Tracks! -</a>
+        <a href="/mixes/new"> Add A Mix! -</a>
+        <a href="/artists/mixes"> View Your Mixes! -</a>
+        <a href="/mixes"> View All Mixes! -</a>
 
         <a href="/logout"> Log Out </a>
-         <p>Welcome, <%=current_user.username %>!!</p>
+        
+        <p>Welcome, <%=current_user.username %>!!</p>
+
 
       <% else %>
         <a href="/signup">Sign Up</a>

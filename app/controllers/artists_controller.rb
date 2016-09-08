@@ -4,15 +4,18 @@ class ArtistsController < ApplicationController
     if !logged_in?
       redirect '/login'
     end
-      @artist = Artist.find(params[:id])
+
+  @artist = Artist.find(params[:id])
     if !@artist.nil? && @artist == current_user
       erb :'artists/show' 
+    else
+      redirect 'tracks'
+    end
   end
-end
 
   get '/signup' do 
-    if !session[:artist_id]
-      erb :'/artists/create_artists', locals: {message: "You have to sign in to get in ya dig?"}
+    if !logged_in?
+      erb :'/artists/create_artists', locals: {message: "You have to sign up to get in ya dig?"}
     else
       redirect to '/artists/show'
     end
@@ -36,27 +39,24 @@ end
       redirect '/show'
     end
   end
+  
+  get '/show' do
+    artist = Artist.all
+    erb :'artists/show'
+  end
 
   post '/login' do
-      @artist = Artist.find_by(:artist_name => params[:artist_name])
-    if @artist && @artist.authenticate(params[:password])
+      artist = Artist.find_by(:username => params[:username])
+    if artist && artist.authenticate(params[:password])
       session[:artist_id] = artist.id
-      redirect "/tracks"
+      redirect "/"
     else
       redirect to '/signup'
     end
   end
 
-  get '/artists/show' do
-    if !session[:artist_id]
-      redirect to '/login'
-    else
-       erb :'artists/show'
-    end
-  end
- 
   get '/logout' do
-    if logged_in? != nil
+    if session[:artist_id] != nil
       session.destroy
       redirect to '/login'
     else
@@ -65,6 +65,3 @@ end
   end
 
 end
-
-
-
