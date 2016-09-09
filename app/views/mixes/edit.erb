@@ -1,1 +1,7 @@
-edit.erb
+<h1> Edit Mix:></h1>
+
+<form action="/mixes/<%= @mix.id%>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+ <input type="text" name="title" id="title" value="<%= @mix.title %>"><br>
+<input type="submit" value="submit"><br>
+</form>

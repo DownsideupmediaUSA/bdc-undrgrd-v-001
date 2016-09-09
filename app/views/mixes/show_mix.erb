@@ -1,1 +1,19 @@
-show_mix.erb
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
+ 
+
+ 
+<%= @mix.id%>. "<%= @mix.title%>"  <%= @mix.artist%>
+
+
+
+
+<a href="/mixes/<%=@mix.id%>/edit"><br>Edit mix </a>
+
+<form method="post" action="/mixes/<%=@mix.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Mix">
+</form> 
