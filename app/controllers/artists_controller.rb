@@ -1,48 +1,38 @@
 class ArtistsController < ApplicationController
 
-  get 'artists/:id' do 
-    if !logged_in?
-      redirect '/login'
-    end
+  use Rack::Flash
 
-  @artist = Artist.find(params[:id])
+  get '/artists' do
+    if logged_in?
+      @artists = Artist.all  
+      erb :'/artists/artists'
+    else
+      redirect to '/login'
+    end
+  end
+
+  get '/artists/:id' do 
+    if !logged_in?
+      @artist = Artist.find_by_id(params[:id])
     if !@artist.nil? && @artist == current_user
       erb :'artists/show' 
     else
-      redirect 'tracks'
+      redirect 'artists'
+    end
+    else 
+      redirect '/login'
     end
   end
 
-  get '/signup' do 
-    if !logged_in?
-      erb :'/artists/create_artists', locals: {message: "You have to sign up to get in ya dig?"}
-    else
-      redirect to '/artists/show'
-    end
-  end
-
-  post '/signup' do 
-    if params[:artist_name] == "" || params[:email] == "" || params[:password] == ""
-      redirect to '/signup'
-    else
-      @artist = Artist.new(:username => params[:username], :artist_name => params[:artist_name], :email => params[:email], :password => params[:password])
-      @artist.save
-      session[:artist_id] = @artist.id
+  get '/show' do
+    if logged_in?
+      @artist = Artist.find_by_id(params[:id])
+    if @artist_id == current_user.id 
       erb :'artists/show'
     end
-  end
-
-  get '/login' do
-    if !session[:artist_id]
-      erb :'artists/login'
     else
-      redirect '/show'
+      redirect '/login'
     end
-  end
-  
-  get '/show' do
-    artist = Artist.all
-    erb :'artists/show'
   end
 
   post '/login' do
@@ -55,13 +45,21 @@ class ArtistsController < ApplicationController
     end
   end
 
-  get '/logout' do
-    if session[:artist_id] != nil
-      session.destroy
-      redirect to '/login'
+  delete '/artists/:id/delete' do 
+    if logged_in?
+      @artist = Artist.find_by_id(params[:id])
+    if @artist_id == current_user.id
+      @artist.delete
+      redirect to '/artists'
     else
-      redirect to '/'
+      flash[:message] = "Nice try buddy..this isnt you!!!"
+      redirect to '/artists'
+    end
+    else
+      redirect to '/login'
     end
   end
+
+  
 
 end

@@ -43,21 +43,6 @@ post '/mixes' do
   end
 end
 
-
-
-
-
-# get '/mixes/:slug' do 
-#   if session[:user_id] 
-#     @mix = mix.find_by_slug(params[:slug])
-#     erb :'mix/show_mix'
-#   else
-#     redirect to '/login'
-#   end
-# end
-
-
-
 get '/mixes/:id/edit' do
   if logged_in?
     @mix = Mix.find_by_id(params[:id])

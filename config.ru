@@ -9,4 +9,5 @@ use Rack::MethodOverride
 use TracksController
 use MixesController
 use ArtistsController
+use SessionsController
 run ApplicationController
