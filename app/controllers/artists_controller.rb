@@ -1,3 +1,4 @@
+require 'rack-flash'
 class ArtistsController < ApplicationController
 
   use Rack::Flash
@@ -15,7 +16,7 @@ class ArtistsController < ApplicationController
     if !logged_in?
       @artist = Artist.find_by_id(params[:id])
     if !@artist.nil? && @artist == current_user
-      erb :'artists/show' 
+      erb :'/artists/show' 
     else
       redirect 'artists'
     end
@@ -26,22 +27,10 @@ class ArtistsController < ApplicationController
 
   get '/show' do
     if logged_in?
-      @artist = Artist.find_by_id(params[:id])
-    if @artist_id == current_user.id 
-      erb :'artists/show'
-    end
+    @tracks = Track.all 
+    erb :'/artists/show'
     else
-      redirect '/login'
-    end
-  end
-
-  post '/login' do
-      artist = Artist.find_by(:username => params[:username])
-    if artist && artist.authenticate(params[:password])
-      session[:artist_id] = artist.id
-      redirect "/"
-    else
-      redirect to '/signup'
+    redirect to '/login'
     end
   end
 
