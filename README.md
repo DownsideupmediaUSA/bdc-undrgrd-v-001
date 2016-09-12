@@ -36,9 +36,10 @@ File Structure:
 ├── app
 │   ├── controllers
 │   │   └── application_controller.rb
-│   │   └── user_controller.rb
+│   │   └── artists_controller.rb
 │   │   └── tracks_controller.rb
 │   │   └── mixes_controller.rb
+│   │   └── sessions_controller.rb
 │   ├── models
 │   │   ├── tracks.rb
 │   │   ├── mixes.rb
@@ -56,17 +57,29 @@ File Structure:
 │       │   ├── edit_mixes.erb
 │       │   ├── show_mixes.erb
 │       │   └── mixes.erb
-│       └── users
-│           ├── create_user.erb
-│           └── login.erb
+│       └── artists
+│           ├── create_artist.erb
+│           ├── artists.erb
+│           ├── login.erb
+│           ├── show.erb
 ├── config
 │   └── environment.rb
 ├── config.ru
 ├── db
 │   ├── development.sqlite
 │   ├── migrate
-│   │   ├── 20151124191332_create_users.rb
-│   │   └── 20151124191334_create_mixes.rb
-│   │   └── 20151124191334_create_tracks.rb
+│   │   ├── 20151124191332_create_tracks.rb
+│   │   ├── 20151124191332_create_artists.rb
+│   │   ├── 20151124191332_create_mixes.rb
+│   │   ├── 20151124191332_add_artists_to_tracks.rb
+│   │   ├── 20151124191332_add_rename_user_table.rb
+│   │   ├── 20151124191332_add_rename_user_column.rb
+│   │   ├── 20151124191332_remove_user_column.rb
+│   │   ├── 20151124191332_remove_user_in_mixes.rb
+│   │   ├── 20151124191332_add_artists_id_to_mixes.rb
+│   │   ├── 20151124191332_add_artists_name_to_mixes.rb
+│   │   ├── 20151124191332_add_artists_name_to_tracks.rb
+│   │   ├── 20151124191332_add_artists_name_to_artists.rb
+│   │   ├── 20151124191332_add_artists_name_to_artists.rb
 │   ├── schema.rb
 │   └── test.sqlite 
