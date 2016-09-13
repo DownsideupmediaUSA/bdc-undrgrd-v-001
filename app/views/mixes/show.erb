@@ -3,9 +3,9 @@
 <% end %>
 
 
- 
 
- 
+
+
 <%= @mix.id%>. "<%= @mix.title%>"  <%= @mix.artist%>
 
 
@@ -16,4 +16,4 @@
 <form method="post" action="/mixes/<%=@mix.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Mix">
-</form> 
+</form>
