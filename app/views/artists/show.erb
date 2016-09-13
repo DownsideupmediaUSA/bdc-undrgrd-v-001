@@ -1,14 +1,19 @@
+<h3><%=current_user.username %></h3><br><br>
 
- 
-Tracks:
+<ul>
+<p>Tracks:</p>
 
-
-
+<% @tracks.each_with_index do |track, i| %>
+<p><%= i + 1%>.<a href="/tracks/<%=track.artist_id%>"><%= track.title%>" - <%= track.artist.artist_name %></a></p>
+<%end%>
+</ul>
 
 <br><br>
 
-Mixes 
+<ul>
+<p>Tracks:</p>
 
-
-
-
+<% @mixes.each_with_index do |mix, i| %>
+<p><%= i + 1%>.<a href="/mixes/<%=mix.artist_id%>"><%= mix.title%>" - <%= mix.artist.artist_name %></p>
+<%end%>
+</ul>

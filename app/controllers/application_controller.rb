@@ -10,17 +10,15 @@ class ApplicationController < Sinatra::Base
   end
 
  get '/' do
+  if logged_in?
    erb :index
+  else 
+    redirect to '/signup'
+  end
  end
 
  helpers do
 
-  
-    def redirect_if_not_logged_in
-      if !logged_in?
-        redirect "/login?error=You have to be logged in to do that"
-      end
-    end
 
     def logged_in?
       !!session[:artist_id]

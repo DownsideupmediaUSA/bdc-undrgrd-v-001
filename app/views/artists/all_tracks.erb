@@ -1,0 +1,7 @@
+
+<h3>All Tracks</h3>
+
+<% @tracks.each_with_index do |track, i| %>
+  <p><%= i + 1%>.<a href="/tracks/<%=track.id%>"><%= track.title%>" - <%= track.artist.artist_name %></p>
+
+<% end %>

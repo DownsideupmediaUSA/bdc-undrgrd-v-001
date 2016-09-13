@@ -1,0 +1,7 @@
+<h3>All Mixes</h3>
+
+<ul>
+<% @mixes.each_with_index do |mix, i|%>
+  <li><%= i + 1%>. <a href="/mixes/<%=mix.id%>"><%= mix.title %> - <%= mix.artist.artist_name%></a> </li>
+  <% end %>
+  </ul>

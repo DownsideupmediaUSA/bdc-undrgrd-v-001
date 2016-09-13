@@ -6,7 +6,7 @@ use Rack::Flash
 get '/mixes' do
   if logged_in?
     @mixes = Mix.all  
-    erb :'/mixes/mixes'
+    erb :'/mixes/index'
   else
     redirect to '/login'
   end
@@ -14,7 +14,7 @@ end
 
 get '/mixes/new' do
   if logged_in?
-    erb :'/mixes/new_mix'
+    erb :'/mixes/new'
   else
     redirect to '/login'
   end
@@ -23,7 +23,7 @@ end
 get '/mixes/:id' do
   if logged_in?
     @mix = Mix.find_by_id(params[:id])
-    erb :'mixes/show_mix'
+    erb :'mixes/show'
   else 
     redirect to '/login'
   end
@@ -31,7 +31,7 @@ end
 
 post '/mixes' do
   if params[:title] == ""
-    redirect to "/mixes/new_mix"
+    redirect to "/mixes/new"
   else
     artist = Artist.find_by_id(session[:artist_id])
     @mix = Mix.create(:title => params[:title], :artist_id => artist.id)

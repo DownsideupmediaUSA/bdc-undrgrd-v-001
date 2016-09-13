@@ -15,5 +15,6 @@ gem 'bcrypt'
 gem "tux"
 gem 'rack-flash3'
 gem 'ruby-beautify', '~> 0.97.4'
+gem 'shotgun'
 
 

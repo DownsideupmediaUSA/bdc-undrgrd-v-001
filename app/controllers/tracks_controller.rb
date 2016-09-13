@@ -1,19 +1,20 @@
 require 'rack-flash'
 class TracksController < ApplicationController
-use Rack::Flash 
+use Rack::Flash
 
 get '/tracks' do
   if logged_in?
-    @tracks = Track.all  
-    erb :'/tracks/tracks'
+    @tracks = Track.all.where("artist_id = ?", current_user.id)
+    erb :'/tracks/index'
   else
     redirect to '/login'
   end
 end
 
+
 get '/tracks/new' do
   if logged_in?
-    erb :'/tracks/new_track'
+    erb :'/tracks/new'
   else
     redirect to '/login'
   end
@@ -24,19 +25,21 @@ post '/tracks' do
   if params[:title] == ""
     redirect to "/tracks/new_track"
   else
-    artist = Artist.find_by_id(session[:artist_id])
-    @track = Track.create(:title => params[:title], :artist_id => artist.id)
-    @track.save
-    flash[:message] = "Successfully created track"
-    redirect("/tracks/#{@track.id}")
+    track = current_user.tracks.create(title: params[:title])
+    if track.save
+      flash[:message] = "Successfully created track"
+      redirect("/tracks/#{track.id}")
+    else
+      redirect to '/tracks/new'
+    end
   end
 end
 
 get '/tracks/:id' do
   if logged_in?
-    @track = Track.find_by_id(params[:id])
-    erb :'tracks/show_track'
-  else 
+    @track = Track.find(params[:id])
+    erb :'tracks/show'
+  else
     redirect to '/login'
   end
 end
@@ -47,11 +50,11 @@ get '/tracks/:id/edit' do
     @track = Track.find_by_id(params[:id])
   if @track.artist_id == current_user.id
     erb :'tracks/edit'
-  else 
-    flash[:message] = "Nice try buddy..this isnt your track!"
-    redirect to '/tracks'
+  else
+    flash[:message] = "Nice try buddy..chose one of your own!"
+    redirect to '/artists/show'
   end
-  else 
+  else
     redirect to '/login'
   end
 end
@@ -68,7 +71,7 @@ patch '/tracks/:id' do
   end
 end
 
-delete '/tracks/:id/delete' do 
+delete '/tracks/:id/delete' do
   if logged_in?
     @track = Track.find_by_id(params[:id])
   if @track.artist_id == current_user.id

@@ -81,5 +81,7 @@ File Structure:
 │   │   ├── 20151124191332_add_artists_name_to_tracks.rb
 │   │   ├── 20151124191332_add_artists_name_to_artists.rb
 │   │   ├── 20151124191332_add_artists_name_to_artists.rb
+│   │   ├── 20151124191332_remove_artists_name_in_mixes.rb
+│   │   ├── 20151124191332_remove_artists_name_in_tracks.rb
 │   ├── schema.rb
 │   └── test.sqlite 
