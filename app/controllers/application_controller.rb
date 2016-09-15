@@ -5,14 +5,14 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enable :sessions  
+    enable :sessions
     set :session_secret, "bdcmuzik secret"
   end
 
  get '/' do
   if logged_in?
    erb :index
-  else 
+  else
     redirect to '/signup'
   end
  end
@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
       @current_user ||= Artist.find(session[:artist_id])
     end
 
-  end 
+  end
 
-  
+
 end

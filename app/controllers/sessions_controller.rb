@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   use Rack::Flash
 
 
-  get '/signup' do 
+  get '/signup' do
     if !logged_in?
       erb :'/artists/create_artists', locals: {message: "You have to sign up to get in ya dig?"}
     else
@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
     end
   end
 
-  post '/signup' do 
+  post '/signup' do
     if params[:artist_name] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/signup'
     else
       @artist = Artist.new(:username => params[:username], :artist_name => params[:artist_name], :email => params[:email], :password => params[:password])
       @artist.save
-      session[:artist_id] = @artist.id
+      session[:artist_id] = @artist_id
       erb :'artists/show'
     end
   end
